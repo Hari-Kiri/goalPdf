@@ -1,4 +1,4 @@
-package goalpdf
+package goalPdf
 
 import (
 	"github.com/Hari-Kiri/gofpdf"
