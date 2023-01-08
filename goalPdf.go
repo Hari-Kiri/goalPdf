@@ -188,30 +188,30 @@ func AddSingleRow(goFpdfInstance *gofpdf.Fpdf, columnWidth, newlineSpacing, xCoo
 			textCell = textList[columnRendering]
 			cellY := yCoordinate + cellsMargin + (columnsHeight-textCell.height)/2
 			// Render title cell
-			for splitH := 0; splitH < len(titleCell.list); splitH++ {
+			for titleRendering := 0; titleRendering < len(titleCell.list); titleRendering++ {
 				goFpdfInstance.SetXY(xCoordinate+cellsMargin, cellY)
 				goFpdfInstance.SetFontSize(titleFontSize)
 				goFpdfInstance.SetFontStyle(titleFontStyle)
-				goFpdfInstance.CellFormat(columnWidth-cellsMargin-cellsMargin, newlineSpacing, string(titleCell.list[splitH]),
-					"", 0, titleAlignment, false, 0, "")
+				goFpdfInstance.CellFormat(columnWidth-cellsMargin-cellsMargin, newlineSpacing,
+					string(titleCell.list[titleRendering]), "", 0, titleAlignment, false, 0, "")
 				cellY += newlineSpacing
 			}
 			// Render subtitle cell
-			for splitI := 0; splitI < len(subtitleCell.list); splitI++ {
+			for subtitleRendering := 0; subtitleRendering < len(subtitleCell.list); subtitleRendering++ {
 				goFpdfInstance.SetXY(xCoordinate+cellsMargin, cellY)
 				goFpdfInstance.SetFontSize(subtitleFontSize)
 				goFpdfInstance.SetFontStyle(subtitleFontStyle)
 				goFpdfInstance.CellFormat(columnWidth-cellsMargin-cellsMargin, newlineSpacing,
-					string(subtitleCell.list[splitI]), "", 0, subtitleAlignment, false, 0, "")
+					string(subtitleCell.list[subtitleRendering]), "", 0, subtitleAlignment, false, 0, "")
 				cellY += newlineSpacing
 			}
 			// Render text cell
-			for splitJ := 0; splitJ < len(textCell.list); splitJ++ {
+			for textRendering := 0; textRendering < len(textCell.list); textRendering++ {
 				goFpdfInstance.SetXY(xCoordinate+cellsMargin, cellY)
 				goFpdfInstance.SetFontSize(textFontSize)
 				goFpdfInstance.SetFontStyle(textFontStyle)
-				goFpdfInstance.CellFormat(columnWidth-cellsMargin-cellsMargin, newlineSpacing, string(textCell.list[splitJ]),
-					"", 0, textAlignment, false, 0, "")
+				goFpdfInstance.CellFormat(columnWidth-cellsMargin-cellsMargin, newlineSpacing,
+					string(textCell.list[textRendering]), "", 0, textAlignment, false, 0, "")
 				cellY += newlineSpacing
 			}
 			xCoordinate += columnWidth
